@@ -1,4 +1,4 @@
-import subprocess, time, socket
+import subprocess, socket
 
 def netcat(hostname, port):    
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
@@ -10,8 +10,6 @@ def netcat(hostname, port):
         c.close()
 
 def core_temp():
-    core_temp = subprocess.check_output( \
-    'sensors | grep "Core 0:" | cut -d"+" -f2 | cut -c 1-4', shell=True)
+    return subprocess.check_output('sensors | grep "Core 0:" | cut -d"+" -f2 | cut -c 1-4', shell=True)
     #.strip()
     #.decode('ascii')
-    return core_temp
