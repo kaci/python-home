@@ -2,12 +2,12 @@
 
 import subprocess, socket
 
-def netcat(hostname, port):    
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
+def netcat(hostname, port):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((hostname, port))
-    s.listen(5)    
+    s.listen(5)
     while True:
-        c, addr = s.accept()                
+        c, addr = s.accept()
         c.send(core_temp())
         c.close()
 
