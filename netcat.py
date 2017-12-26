@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+'''
+description
+'''
+
 import subprocess, socket
 
 def netcat(hostname, port):
