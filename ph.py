@@ -10,10 +10,10 @@ def ph_news(url):
     page = requests.get(url)
     data = page.text
     soup = BeautifulSoup(data, 'lxml')
-    
+
     conts = soup.find_all('li', class_ = 'content flc')
     return [(x.a.text, x.a['href']) for x in conts]
-        
+
 def ph_article():
     url = 'https://prohardver.hu/teszt/ajanlatok_tavasz_elejere/notebookok.html'
     page = requests.get(url)
