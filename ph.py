@@ -12,20 +12,18 @@ def ph_news(url):
     soup = BeautifulSoup(data, 'lxml')
     
     conts = soup.find_all('li', class_ = 'content flc')
-    for cont in conts:
-        print(cont.a.text)
-
+    return [(x.a.text, x.a['href']) for x in conts]
+        
 def ph_article():
-    url = 'https://prohardver.hu/hir/kinaban_is_feltunt_a_nand_es_dram_arak_emelkedese.html'
+    url = 'https://prohardver.hu/teszt/ajanlatok_tavasz_elejere/notebookok.html'
     page = requests.get(url)
     data = page.text
     soup = BeautifulSoup(data, 'lxml')
 
     cont_all = soup.find('div', itemprop = 'articleBody')
     conts = cont_all.find_all('p')
-    for cont in conts:
-        print(cont.text.strip().replace('[+]', ''))
+    return [x.text.strip().replace('[+]', '') for x in conts]
 
 if __name__ == '__main__':
-    #ph_news(url)
-    ph_article()
+    #print(ph_news(url))
+    print(ph_article())
